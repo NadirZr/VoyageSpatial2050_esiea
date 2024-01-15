@@ -1,0 +1,62 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Ajouter des photos de ma maison') {
+            steps {
+                script {
+                    // Appeler le script ou la commande pour ajouter des photos de la maison
+                    addHousePhotos()
+                }
+            }
+        }
+
+        stage('Sélectionner des meubles et déco dans un catalogue') {
+            steps {
+                script {
+                    // Appeler le script ou la commande pour sélectionner des meubles et déco
+                    selectFurnitureAndDecor()
+                }
+            }
+        }
+
+        stage('Voir un aperçu 3D de ma maison avec les changements') {
+            steps {
+                script {
+                    // Appeler le script ou la commande pour générer un aperçu 3D
+                    generate3DPreview()
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo "Pipelines exécutées avec succès"
+        }
+
+        failure {
+            echo "Les pipelines ont échoué"
+        }
+
+        always {
+            echo "Pipelines terminées"
+        }
+    }
+}
+
+// Fonctions fictives représentant les scripts ou commandes associées aux user stories
+def addHousePhotos() {
+    // Logique pour ajouter des photos de la maison
+    echo "Ajout de photos de la maison"
+}
+
+def selectFurnitureAndDecor() {
+    // Logique pour sélectionner des meubles et de la déco dans un catalogue
+    echo "Sélection de meubles et de déco dans un catalogue"
+}
+
+def generate3DPreview() {
+    // Logique pour générer un aperçu 3D de la maison avec les changements
+    echo "Génération d'un aperçu 3D"
+}
